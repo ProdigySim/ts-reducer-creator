@@ -1,4 +1,4 @@
-import {helpers, State} from "./newStore"
+import {helpers, State, SwitchState} from "./newStore"
 import * as React from "react"
 import {connect} from "react-redux"
 import {bindActionCreators} from "redux"
@@ -10,12 +10,16 @@ export interface Props extends State {
 class AppComponent extends React.Component<Props> {
 
   render() {
-    const { value, actions } = this.props
+    const { value, boolValue, switchState, actions } = this.props;
     return (
       <div>
         <p>Value: { value }</p>
+        <p>Boolean Value: { boolValue }</p>
+        <p>Switch State: { switchState }</p>
         <button onClick={() => actions.increment()}>Increment</button>
         <button onClick={() => actions.useRemoteValue(1)}>Use remote value</button>
+        <button onClick={() => actions.setBoolValue(!boolValue)}>Toggle boolean value</button>
+        <button onClick={() => actions.setSwitchState(SwitchState.On)}>Turn on switch</button>
       </div>
     )
   }
