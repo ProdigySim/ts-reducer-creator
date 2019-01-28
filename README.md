@@ -86,12 +86,15 @@ const actionCreators = {
 ```
 ## ts-reducer-creator
 ```typescript
-interface CounterActions {
+interface ICounterActions {
   increment: void;
   setValue: number;
 }
 
-export const { reducer, actionCreators } = createHelpers<State, CounterActions>(
+export const { reducer, actionCreators } = createHelpers<
+  IState,
+  ICounterActions
+>(
   'Counter', // Globally unique prefix
   initialState, // Initial reducer state
   {  // reducer cases 
