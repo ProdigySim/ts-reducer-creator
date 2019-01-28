@@ -87,18 +87,22 @@ const actionCreators = {
 ## ts-reducer-creator
 ```typescript
 interface CounterActions {
-    increment: void;
-    setValue: number;
+  increment: void;
+  setValue: number;
 }
 
-export const {reducer, actionCreators} = createHelpers<State, CounterActions>('Counter', initialState, {
+export const { reducer, actionCreators } = createHelpers<State, CounterActions>(
+  'Counter', // Globally unique prefix
+  initialState, // Initial reducer state
+  {  // reducer cases 
     increment: (state) => {
-        return {...state, value: state.value + 1}; 
+      return {...state, value: state.value + 1}; 
     },
     setValue: (state, payload) => {
-        return {...state, value: payload};  
+      return {...state, value: payload};  
     }
-});
+  }, 
+);
 ```
 # Examples
 https://github.com/ptol/ts-reducer-creator/tree/master/examples
